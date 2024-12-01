@@ -27,16 +27,16 @@ public class ExampleController {
     @RequestMapping(value = "/**", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 //    @RequestMapping(value = "/**")
     public ResponseEntity<?> forwardRequest(
-//            @RequestParam(required = false) String targetUrl,
+            @RequestParam(required = false) String targetUrl,
             @RequestBody(required = false) String body,
             @RequestHeader HttpHeaders headers,
-            HttpMethod method,
-            HttpServletRequest request) {
+            HttpMethod method){
+//            HttpServletRequest request) {
 //        public ResponseEntity<?> forwardRequest
 //        (HttpServletRequest request,HttpMethod method, @RequestHeader HttpHeaders headers) throws IOException {
 //        HttpHeaders headers = getDefaultHeaders(null);
 //        String body = getRequestBody(request);
-        String targetUrl = urlBuilder(request);
+//        String targetUrl = urlBuilder(request);
         HttpEntity<String> requestEntity = new HttpEntity<>(body, headers);
         ResponseEntity<String> response = restTemplate.exchange(
                 URI.create(targetUrl),
